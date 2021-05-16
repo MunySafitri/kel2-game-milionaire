@@ -1,0 +1,55 @@
+makanisme game milionaire
+
+1.masukan sign in login
+
+*kita masukkan dulu ke dalam file binary(fungsi yang akan digunakan strtok,strcmp,strcpy,strcat)
+  .strtok untuk memisahkan namauser dan pass 
+  .strcat digunakan untuk membuat data dengan menambahkan ".bin" pada variabel yang telah dimasukkan usernamenya
+  .strcpy menggopi hasil strtok ke variabel tertentu untuk menyimpan username dan pass user ,
+  .strcmp digunakan untuk login, jika menghasilkan nilai nol. maka dapat memulai game, jika tidak
+  maka menampilkan "nama user dan pass anda salah" lalu masukkan pilihan "keluar" dan "sign in"(ingat sistem menggunakan cla)
+  
+misalkan nama execute fpr
+saat user manggunakan cla ./fpr  
+maka akan menampilkan pilihan yaitu 1.sign in, 2.login dan 3.keluar. jika dipilih adalah satu, maka jalankan program *1*, 
+jika dipilih dua, maka tammpilkan
+"untuk menjalankan  program ini, gunakan comman ./fpr username@code" lalu return exit_failure, stelah dimasukkan clanya maka jalankan program *2*.
+jika dipiluh adalah 3 , maka tampilkan "terimakasih" lalu return exit failure.
+
+
+
+*1* misalkan 'muny@mumuncan' (username@pass) ,terlebih dahulu kita masukkan ke file binary  maka user sudah sign in
+   *menggunakan isalnum pada percabangan (contoh:if(isalnum(c)==0)) untuk mendeteksi apakah ada @ atau tidak, jika tidak ada maka akan menampilkan
+   "urutan yang anda masukkan salah,gunakan @ untuk sign in", jika ada '@' maka dapat membuat file binary tersebut
+   kita dapat menggunakan percabangan if, setelah itu kita tulis ke dalam file binary dengan fwrite (seblumnya buka stream file .bin dengan mode wb
+   dengan menggunakan strcat untuk menambahkan ".bin"), untuk membuat file binary.bin secara otomatis sebelum situliskan bianry ke file .bin,, setelah
+   memasukkan file binary lalu tampilkan, "sukses mendaftar" return exit failure.
+
+
+*2*untuk login,baca kembali file binary sesuai inputan user, dan jangan lupa buka stream file binary menggunakan strcat terlebih dahulu
+   untuk manambahkan .bin setelah apa yang dimasukkan user,lalu gunakan fread dengan mode rb  
+   misalkan user memasukan dafa@cintaiaku maka tidak bisa login,karna tidak ada file ".bin" yang terbentuk setelah 
+   di sign in, jika user memasukkkan muny@mumuncan, maka dapat masuk karna dapat ditemukan
+   file binary nya(sebelumnya di strcat ".bin" dulu setelah user memasukkan username@pass)
+
+  lalu muny@mumuncan (yang di read dalam file muny@mumuncan.bin) tadi dipisahkan menjadi dua yaitu muny dan mumuncan menggunkanan
+  strtok(), *//masih ragu apakah perlu di compare atau ga pake strcmp:V
+  lalu masuk kedalam gamenya dan kita tampilkan "Halo, Selamat datang muny" (muny muncul setelah kita memanggilkan lagi sebuah variabel yang mengisi nilai "muny" 
+  setelah dilakukan strtok() tadi).
+  lalu program game dijalankan
+ 
+
+
+
+menampilkan pertanyaan beserta nilai uang sesuai dengan  bobot pertanyaan,(*\\ekspetasi sementara kita gunakan countdown)
+soal yang kita buat ada 7 aja ya...
+tampilkan pertanyaan, terlebih dahulu simpan jawaban yang benar nya. lalu saat user memasukkan jawabn yang tepat, maka uang user bertambah,
+jika user memasukkan jawabn yang salah , maka uang tidak bertambah, dan menampilkan "jawaban yang anda masukka tidak benar, jawabn yang benarnya adalah..." 
+
+
+
+*\\ekpetasi sementara terdapat option 50:50(2x pake), penambahan waktu 1 menit(1 pake), skip
+menampilkan uang yang dihasilkan user
+terus menampilkan pilihan berhenti atau main lagi.. pada akhir setelah menampilkan semua nilai uang yang didapatkan user,
+gunkan loop do while ketika user ingin main lagi,, do while nya dari awal pertanyaan lagi  
+
