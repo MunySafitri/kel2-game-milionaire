@@ -96,11 +96,71 @@ int main(int arguments, char *argument[]){
             printf("\nGunakan akun %s untuk login",username);
             getchar();
             system("cls");
-            goto mainmenu;
-            
+            goto mainmenu;   
         }
+    }else if(arguments == 2){
+        //char usernameinput[50], passwordinput[50];
+        //printf("sampai disini\n");
+        strcpy(usernameinput, argument[1]);
+        char* user[3];
+        user[0] = strtok(usernameinput, "@");
+        //printf("%s\n",user[0]);
+        int ctrl=0;
+        while(user[ctrl++] != NULL)
+        {
+            user[ctrl] = strtok(NULL, "@");
+        }
+        //printf("%s\n",user[1]);
+         //printf("sampai disini\n");
+        FILE *fpr;
+        strcat(argument[1],".bin");
+        if((fpr = fopen(argument[1], "rb")) == NULL)
+        {
+            printf("\nMaaf, Anda belum mendaftar\nSilahkan daftar terlebih dahulu..\n");
+            return EXIT_FAILURE;
+        }
+
+        char account[100];
+        fread(account, sizeof(char), sizeof(account)/sizeof(char), fpr);
+        //printf("%s",account);
+        fclose(fpr);
+
+
+        char *string[3];
+        char username[50], password[50];
+        //int ctrl = 0;
+
+        string[0] = strtok(account, "@");
+        //printf("%s\n",string[0]);
+        ctrl=0;
+        while(string[ctrl++] != NULL)
+        {
+            string[ctrl] = strtok(NULL, "@");
+        }
+        // printf("%s\n",string[1]);
+        strcpy(username, string[0]);
+        strcpy(password, string[1]);
+        //printf("%s\n",password);
+        //printf("usernameinput:%s,passwordinput:%s,input:%s,pass:%s",user[0],user[1],username,password);
+        if( (strcmp(user[0], username) == 0) && (strcmp(user[1], password) == 0) )
+        {
+            system ("color 0a") ;
+            printf("\nCONGRATULATIONS ON THOU REMEMBRENCE ENJOY YOUR STAY!\n");
+            getchar();
+        }else
+        {
+            system ("color 0c") ;
+            printf("\nTHOU MIGHT HAVE BRAIN DAMAGE!");
+            printf("\nMaaf, akun yang anda masukkan tidak terdaftar\nSilahkan daftar terlebih dahulu dengan menggunakan command ./namaprogram\n") ; 
+            return EXIT_FAILURE;
+        }
+        
+        system("cls");
+        system ("color 09") ;
+        
+        //toupper(username);
+        printf("Welcome %s!\n",username);
+        //mulai permainan
     }
-
-
     return 0;
 }
