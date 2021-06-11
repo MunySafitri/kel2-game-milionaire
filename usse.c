@@ -206,7 +206,7 @@ int main () {
                     printf("Masukkan pilihan anda: ");
                     if (tolower(getch()) == 'b') {
                         jajawab();
-                        count++;
+                        count++; 
                         if (toupper(getch()) == 'N') {
                             goto score;
                         } else {
