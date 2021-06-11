@@ -28,7 +28,7 @@ int main () {
     printf("\n\t\t > press Q to quit             ");
     printf("\n\t\t________________________________________\n\n");
     choice = toupper(getch());
-    if (choice == 'C') {
+    if (choice == 'C') { 
         system("cls");
         printf("\n\t\tProgram ini disiapkan oleh\n\n"
                "1. Hadafee Mudo 2008107010101\n"               //untuk user di pilihan Credit
